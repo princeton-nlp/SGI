@@ -1,4 +1,5 @@
 import torch
+import wandb
 from kornia.augmentation import RandomAffine,\
     RandomCrop,\
     CenterCrop, \
@@ -162,6 +163,7 @@ def save_model_fn(folder, model_save, seed, use_epoch=True, save_only_last=False
             path = Path(f'{folder}/{model_save}_{seed}.pt')
 
         torch.save({"model": model, "optim": optim}, path)
+        wandb.save(f'{folder}/{model_save}_{seed}_epoch_{epoch}.pt')
         print("Saved model at {}".format(path))
 
         if save_only_last:

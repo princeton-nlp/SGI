@@ -2,6 +2,7 @@ import gzip
 from pathlib import Path
 import re
 from typing import List, Tuple
+import wandb
 
 import numpy as np
 from rlpyt.utils.collections import namedarraytuple
@@ -51,7 +52,7 @@ class DQNReplayDataset(Dataset):
         del data__
         data_ = torch.from_numpy(data___)
       else:
-        new_filename = os.path.join(tmp_data_path, Path(os.path.basename(filename)[:-3]+".npy"))
+        new_filename = os.path.join(tmp_data_path, Path(os.path.basename(filename)[:-3]+"_{}_.npy".format(wandb.run.id)))
         print("Stored on disk at {}".format(new_filename))
         np.save(new_filename, data___,)
         del data___

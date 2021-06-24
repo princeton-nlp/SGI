@@ -2,6 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
+HC ROMS.zip
+ROMS.zip
+slurm_output/
+logs/
 
 # C extensions
 *.so

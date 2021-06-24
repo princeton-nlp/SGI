@@ -5,7 +5,7 @@ hydra:
 experiment_group: ~
 num_logs: 10
 seed: 1
-model_folder: ./
+model_folder: ./models/
 model_load: ~ # filename to load a pretrained model from
 load_last: True
 offline_model_save: ~ # filename to save pretrain model to

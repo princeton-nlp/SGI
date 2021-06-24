@@ -5,7 +5,7 @@ shift
 export seed=$1
 
 python -m scripts.run public=True model_folder=./ offline.runner.save_every=2500 \
-    env.game=pong seed=1 offline_model_save=sgim_${game}_resnet_${seed} \
+    env.game=${game} seed=${seed} offline_model_save=sgim_${game}_resnet_${seed} \
     offline.runner.epochs=20 offline.runner.dataloader.games=[${map[${game}]}] \
     offline.runner.no_eval=1 \
     +offline.algo.goal_weight=1 \
@@ -14,11 +14,11 @@ python -m scripts.run public=True model_folder=./ offline.runner.save_every=2500
     +offline.algo.target_update_tau=0.01 \
     +offline.agent.model_kwargs.momentum_tau=0.01 \
     do_online=False \
-    algo.batch_size=256 \
+    algo.batch_size=128 \
     +offline.agent.model_kwargs.noisy_nets_std=0 \
     offline.runner.dataloader.dataset_on_disk=True \
     offline.runner.dataloader.samples=1000000 \
     offline.runner.dataloader.checkpoints='[1,25,50]' \
     offline.runner.dataloader.num_workers=2 \
-    offline.runner.dataloader.data_path=./data/ \
-    offline.runner.dataloader.tmp_data_path=./
+    offline.runner.dataloader.data_path=/n/fs/nlp-data/dqnreplay/ \
+    offline.runner.dataloader.tmp_data_path=/n/fs/scratch/jtuyls/
