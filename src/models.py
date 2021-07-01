@@ -409,10 +409,14 @@ class SPRCatDqnModel(torch.nn.Module):
         if train:
             pred_latents = []
             input_obs = observation[0].flatten(1, 2)
-            input_obs = self.transform(input_obs, self.transforms, augment=True)
+            input_obs = self.transform(input_obs, self.transforms, augment=True) # TODO: might have to comment this out
             latent = self.stem_forward(input_obs,
                                        prev_action[0],
                                        prev_reward[0])
+
+            # TODO: add in second call to stem_forward but now with resnet with different dropout mask
+            # TODO: add in contrastive loss
+
             if self.rl or self.bc_from_values:
                 log_pred_ps = self.head_forward(latent,
                                                 prev_action[0],

@@ -1,7 +1,7 @@
 #!/bin/bash
 GAMES="pong breakout kangaroo"
 # GAMES="kangaroo"
-SEEDS=(0 1 2)
+SEEDS=(0)
 
 for seed in ${SEEDS[@]}
 do

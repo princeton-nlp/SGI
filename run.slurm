@@ -5,7 +5,7 @@
 ##############################
 
 # Give your job a name, so you can recognize it in the queue overview
-#SBATCH --job-name=sgi
+#SBATCH --job-name=sgi_drop
 
 # Remove one # to uncommment
 #SBATCH --output=slurm_output/%x-%j.txt

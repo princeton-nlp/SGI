@@ -69,10 +69,11 @@ class InvertedResidual(nn.Module):
                 nn.ReLU(inplace=True),
                 # pw-linear
                 conv3,
-                init_normalization(out_channels, norm_type)
+                init_normalization(out_channels, norm_type),
+                nn.Dropout(p=0.1)
             )
             if norm_type != "none":
-                nn.init.constant_(self.conv[-1].weight, 0)
+                nn.init.constant_(self.conv[-2].weight, 0)
 
     def forward(self, x):
         if self.downsample:
